@@ -1,0 +1,142 @@
+
+> #Assignment 1: install packages and import data from different data sources and show the libraries can help on those datasets.
+> 
+> 
+> #1.Import dat .... [TRUNCATED] 
+package ‘readr’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Users\user\AppData\Local\Temp\RtmpqOqI0K\downloaded_packages
+
+> # Install tidyverse package (includes readr and dplyr)
+> install.packages("tidyverse")
+package ‘tidyverse’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Users\user\AppData\Local\Temp\RtmpqOqI0K\downloaded_packages
+
+> # Load libraries
+> library(readr)
+
+> library(tidyverse)
+
+> penguins <- read_csv(
++   "C:/Users/user/Downloads/penguins.csv"
++ )
+indexing penguins.csv [] 20.10MB/s, eta:  0s                                           
+> View(penguins)
+
+> head(penguins)
+# A tibble: 6 × 8
+  species island    bill_len bill_dep
+  <chr>   <chr>        <dbl>    <dbl>
+1 Adelie  Torgersen     39.1     18.7
+2 Adelie  Torgersen     39.5     17.4
+3 Adelie  Torgersen     40.3     18  
+4 Adelie  Torgersen     NA       NA  
+5 Adelie  Torgersen     36.7     19.3
+6 Adelie  Torgersen     39.3     20.6
+# ℹ 4 more variables: flipper_len <dbl>,
+#   body_mass <dbl>, sex <chr>, year <dbl>
+
+> str(penguins)
+spc_tbl_ [344 × 8] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
+ $ species    : chr [1:344] "Adelie" "Adelie" "Adelie" "Adelie" ...
+ $ island     : chr [1:344] "Torgersen" "Torgersen" "Torgersen" "Torgersen" ...
+ $ bill_len   : num [1:344] 39.1 39.5 40.3 NA 36.7 39.3 38.9 39.2 34.1 42 ...
+ $ bill_dep   : num [1:344] 18.7 17.4 18 NA 19.3 20.6 17.8 19.6 18.1 20.2 ...
+ $ flipper_len: num [1:344] 181 186 195 NA 193 190 181 195 193 190 ...
+ $ body_mass  : num [1:344] 3750 3800 3250 NA 3450 ...
+ $ sex        : chr [1:344] "male" "female" "female" NA ...
+ $ year       : num [1:344] 2007 2007 2007 2007 2007 ...
+ - attr(*, "spec")=
+  .. cols(
+  ..   species = col_character(),
+  ..   island = col_character(),
+  ..   bill_len = col_double(),
+  ..   bill_dep = col_double(),
+  ..   flipper_len = col_double(),
+  ..   body_mass = col_double(),
+  ..   sex = col_character(),
+  ..   year = col_double()
+  .. )
+ - attr(*, "problems")=<externalptr> 
+
+> summary(penguins)
+   species             island         
+ Length:344         Length:344        
+ Class :character   Class :character  
+ Mode  :character   Mode  :character  
+                                      
+                                      
+                                      
+                                      
+    bill_len        bill_dep    
+ Min.   :32.10   Min.   :13.10  
+ 1st Qu.:39.23   1st Qu.:15.60  
+ Median :44.45   Median :17.30  
+ Mean   :43.92   Mean   :17.15  
+ 3rd Qu.:48.50   3rd Qu.:18.70  
+ Max.   :59.60   Max.   :21.50  
+ NA's   :2       NA's   :2      
+  flipper_len      body_mass   
+ Min.   :172.0   Min.   :2700  
+ 1st Qu.:190.0   1st Qu.:3550  
+ Median :197.0   Median :4050  
+ Mean   :200.9   Mean   :4202  
+ 3rd Qu.:213.0   3rd Qu.:4750  
+ Max.   :231.0   Max.   :6300  
+ NA's   :2       NA's   :2     
+     sex                 year     
+ Length:344         Min.   :2007  
+ Class :character   1st Qu.:2007  
+ Mode  :character   Median :2008  
+                    Mean   :2008  
+                    3rd Qu.:2009  
+                    Max.   :2009  
+                                  
+
+> dim(penguins)
+[1] 344   8
+
+> names(penguins)
+[1] "species"     "island"     
+[3] "bill_len"    "bill_dep"   
+[5] "flipper_len" "body_mass"  
+[7] "sex"         "year"       
+
+> colSums(is.na(penguins))
+    species      island    bill_len 
+          0           0           2 
+   bill_dep flipper_len   body_mass 
+          2           2           2 
+        sex        year 
+         11           0 
+
+> write.csv(penguins,
++           "penguins.csv",
++           row.names = FALSE)
+
+> #Download summary table for penguin
+> summary_table <- data.frame(
++   Variable = names(penguins),
++   Summary = sapply(penguins, function(x) {
++    .... [TRUNCATED] 
+
+> write.csv(
++   summary_table,
++   "C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/outputs/summary_statistics.csv",
++   ro .... [TRUNCATED] 
+
+> #2. import Excel's Data to R programming
+> install.packages("readxl")
+package ‘readxl’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+	C:\Users\user\AppData\Local\Temp\RtmpqOqI0K\downloaded_packages
+
+> library(readxl)
+
+> exam_marks<-read_excel("C:/Users/user/Downloads/exam_marks.xlsx")
+-                                         
+ERROR: zip file 'C:\Users\user\Downloads\exam_marks.xlsx' cannot be opened 

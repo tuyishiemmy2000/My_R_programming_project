@@ -1,0 +1,6 @@
+"Variable","Summary"
+"Sepal.Length","   Min. 1st Qu.  Median    Mean 3rd Qu. ;   4.300   5.100   5.800   5.843   6.400 ;    Max. ;   7.900 "
+"Sepal.Width","   Min. 1st Qu.  Median    Mean 3rd Qu. ;   2.000   2.800   3.000   3.057   3.300 ;    Max. ;   4.400 "
+"Petal.Length","   Min. 1st Qu.  Median    Mean 3rd Qu. ;   1.000   1.600   4.350   3.758   5.100 ;    Max. ;   6.900 "
+"Petal.Width","   Min. 1st Qu.  Median    Mean 3rd Qu. ;   0.100   0.300   1.300   1.199   1.800 ;    Max. ;   2.500 "
+"Species","    setosa versicolor  virginica ;         50         50         50 "
