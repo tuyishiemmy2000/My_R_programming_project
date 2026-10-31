@@ -49,53 +49,6 @@ write.csv(
 
 
 
-#2. import Excel's Data to R programming
-install.packages("readxl")
-library(readxl)
-
-exam_marks<-read_excel("C:/Users/user/Downloads/exam_marks.xlsx")
-View(exam_marks)
-
-write.csv(exam_marks,
-          "exam_marks.xlsx",
-          row.names = FALSE)
-
-# Display first six records
-head(exam_marks)
-names(exam_marks)
-
-# Display last six records
-tail(exam_marks)
-
-# Check dataset structure
-str(exam_marks)
-
-# Summary statistics
-summary(exam_marks)
-
-# Number of rows and columns
-dim(exam_marks)
-
-# Display column names
-names(exam_marks)
-
-# Check missing values
-colSums(is.na(exam_marks))
-
-#Download summary table for penguin
-summary_table <- data.frame(
-  Variable = names(exam_marks),
-  Summary = sapply(exam_marks, function(x) {
-    paste(capture.output(summary(x)), collapse = "; ")
-  })
-)
-
-
-write.csv(
-  summary_table,
-  "C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/outputs/summary_statistics.csv",
-  row.names = FALSE
-)
 
 
 
@@ -227,7 +180,7 @@ x[!bad]
 
 
 x <- c(1, 2, NA, 4, NA, 5)
-y <- c("a", "b", NA, "d", NA, "f")  
+y <- c("a", "b", NA, "d", NA, "f") 
 good <- complete.cases(x, y) 
 good
 sum(c(TRUE,TRUE,FALSE,FALSE,FALSE))
