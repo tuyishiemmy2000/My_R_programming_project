@@ -1,34 +1,74 @@
 # My R Programming Project
 
 ## Description
-Short description of the project, data used and objectives.
 
-## Folder structure
-```
+This project demonstrates the use of R programming for importing, cleaning, exploring, summarizing, and analyzing data from different sources.
+
+The project covers CSV files, Excel workbooks, MySQL databases, and online APIs. It also demonstrates basic R programming concepts, data manipulation, descriptive statistics, and data visualization.
+
+## Objectives
+
+- Import data from CSV and Excel files.
+- Connect to and retrieve data from a MySQL database.
+- Retrieve data from an online API.
+- Explore and clean datasets.
+- Calculate descriptive statistics and summary tables.
+- Perform data analysis using R.
+- Create visualizations, including histograms, boxplots, scatterplots, and barplots.
+- Save analysis outputs for documentation and reporting.
+
+## Folder Structure
+
+```text
 My_R_programming_project/
 ├── My_R_programming_project.Rproj
 ├── README.md
 ├── .gitignore
 ├── data/
-│   ├── raw/        original files (never edited)
-│   └── clean/      cleaned CSV files
-├── scripts/        R scripts
-├── outputs/        console output, summary tables
+│   ├── raw/
+│   └── clean/
+├── scripts/
+│   └── R programming course project.R
+├── outputs/
+│   ├── All_R_Assignment_Outputs.txt
+│   ├── R_Warnings_and_Messages.txt
 │   └── tables/
-└── plots/          histogram, boxplot, scatterplot, barplot
+└── plots/
 ```
 
 ## Requirements
-- R (>= 4.0) and RStudio
-- Packages: list them here (e.g. ggplot2, dplyr)
 
-## How to run
-1. Open `My_R_programming_project.Rproj` in RStudio.
-2. Put `merged_table_clean.csv` and `exam_marks_clean.csv` in `data/clean/`.
-3. Run `scripts/My_R_programming.R`.
+- R version 4.0 or later
+- RStudio
+- Required R packages:
+  - readr
+  - readxl
+  - tidyverse
+  - dplyr
+  - DBI
+  - RMariaDB
+  - jsonlite
+  - ggplot2
+
+## How to Run
+
+1. Clone or download this GitHub repository.
+2. Open `My_R_programming_project.Rproj` in RStudio.
+3. Install the required R packages.
+4. Ensure the required datasets are available in the appropriate folders.
+5. Open `scripts/R programming course project.R`.
+6. Run the script in RStudio.
 
 ## Outputs
-Results are saved in `outputs/` and `plots/`.
+
+The project generates:
+
+- Cleaned datasets in CSV format.
+- Descriptive statistics and summary tables.
+- Recorded R assignment outputs.
+- R warnings and messages.
+- Data visualizations saved in the plots folder.
 
 ## Author
-TUYISHIME Emmanuel
+
+**TUYISHIME Emmanuel**
