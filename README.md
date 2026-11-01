@@ -17,24 +17,6 @@ The project covers CSV files, Excel workbooks, MySQL databases, and online APIs.
 - Create visualizations, including histograms, boxplots, scatterplots, and barplots.
 - Save analysis outputs for documentation and reporting.
 
-## Folder Structure
-
-```text
-My_R_programming_project/
-├── My_R_programming_project.Rproj
-├── README.md
-├── .gitignore
-├── data/
-│   ├── raw/
-│   └── clean/
-├── scripts/
-│   └── R programming course project.R
-├── outputs/
-│   ├── All_R_Assignment_Outputs.txt
-│   ├── R_Warnings_and_Messages.txt
-│   └── tables/
-└── plots/
-```
 
 ## Requirements
 
@@ -48,7 +30,6 @@ My_R_programming_project/
   - DBI
   - RMariaDB
   - jsonlite
-  - ggplot2
 
 ## How to Run
 
