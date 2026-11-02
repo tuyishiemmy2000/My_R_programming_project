@@ -1,3 +1,77 @@
+R Programming Course Project
+================
+TUYISHIME Emmanuel
+2026-10-31
+
+- [Introduction](#introduction)
+- [Assignment 1: Importing Data from Different
+  Sources](#assignment-1-importing-data-from-different-sources)
+  - [1.1 Importing data from a CSV
+    file](#11-importing-data-from-a-csv-file)
+    - [Display the first five
+      observations](#display-the-first-five-observations)
+    - [Examine the dataset structure](#examine-the-dataset-structure)
+    - [Summary statistics](#summary-statistics)
+    - [Number of rows and columns](#number-of-rows-and-columns)
+    - [Variable names](#variable-names)
+    - [Check missing values](#check-missing-values)
+    - [Export the imported dataset](#export-the-imported-dataset)
+    - [Create and export a summary
+      table](#create-and-export-a-summary-table)
+- [Import students table](#import-students-table)
+- [Display records](#display-records)
+  - [Exploring the students dataset](#exploring-the-students-dataset)
+  - [Exporting the dataset](#exporting-the-dataset)
+  - [Disconnecting from MySQL](#disconnecting-from-mysql)
+  - [1.4 Importing data from an online
+    API](#14-importing-data-from-an-online-api)
+    - [Exploring the API Dataset](#exploring-the-api-dataset)
+- [Assignment 2: Basic R Programming and Data
+  Analysis](#assignment-2-basic-r-programming-and-data-analysis)
+  - [2.1 Creating vectors and calculating summary
+    statistics](#21-creating-vectors-and-calculating-summary-statistics)
+  - [2.2 Logical vectors](#22-logical-vectors)
+  - [2.3 Character vectors](#23-character-vectors)
+  - [2.4 Integer vectors](#24-integer-vectors)
+  - [2.5 Complex numbers](#25-complex-numbers)
+  - [2.6 Creating and multiplying
+    matrices](#26-creating-and-multiplying-matrices)
+  - [2.7 Creating a list](#27-creating-a-list)
+  - [2.8 Creating a factor](#28-creating-a-factor)
+  - [2.9 Identifying and handling missing
+    values](#29-identifying-and-handling-missing-values)
+  - [2.10 Creating a data frame](#210-creating-a-data-frame)
+  - [2.11 Creating a data frame for height and
+    weight](#211-creating-a-data-frame-for-height-and-weight)
+    - [Print, summarize, and inspect the data
+      frame](#print-summarize-and-inspect-the-data-frame)
+    - [Export the data frame](#export-the-data-frame)
+  - [2.12 Applying functions to rows and
+    columns](#212-applying-functions-to-rows-and-columns)
+  - [2.13 Importing built-in data in
+    R](#213-importing-built-in-data-in-r)
+  - [2.14 Visualizing the iris dataset using a
+    boxplot](#214-visualizing-the-iris-dataset-using-a-boxplot)
+  - [2.15 Relationship between two categorical
+    variables](#215-relationship-between-two-categorical-variables)
+    - [Exploring one department](#exploring-one-department)
+  - [2.16 Creating bar plots](#216-creating-bar-plots)
+  - [2.17 Scatter plots and
+    correlation](#217-scatter-plots-and-correlation)
+  - [2.18 Linear regression model](#218-linear-regression-model)
+  - [2.19 Histograms](#219-histograms)
+  - [2.20 Adding a smooth line to a
+    plot](#220-adding-a-smooth-line-to-a-plot)
+  - [2.21 Creating a body mass index (BMI)
+    variable](#221-creating-a-body-mass-index-bmi-variable)
+  - [2.22 Working with dates](#222-working-with-dates)
+  - [2.23 Creating a leadership
+    dataset](#223-creating-a-leadership-dataset)
+  - [2.24 Handling missing values and creating age
+    categories](#224-handling-missing-values-and-creating-age-categories)
+  - [2.25 Sorting and subsetting data](#225-sorting-and-subsetting-data)
+- [Conclusion](#conclusion)
+
 # Introduction
 
 This report demonstrates how to import data from different sources,
@@ -15,17 +89,21 @@ RStudio Console, not every time the report is knitted.
 The `readr` package is used to import the penguins dataset from a CSV
 file.
 
-    library(readr)
-    library(tidyverse)
+``` r
+library(readr)
+library(tidyverse)
 
-    penguins <- read_csv(
-      "C:/Users/user/Downloads/penguins.csv",
-      show_col_types = FALSE
-    )
+penguins <- read_csv(
+  "C:/Users/user/Downloads/penguins.csv",
+  show_col_types = FALSE
+)
+```
 
 ### Display the first five observations
 
-    head(penguins, 5)
+``` r
+head(penguins, 5)
+```
 
     ## # A tibble: 5 × 8
     ##   species island    bill_len bill_dep
@@ -40,7 +118,9 @@ file.
 
 ### Examine the dataset structure
 
-    str(penguins)
+``` r
+str(penguins)
+```
 
     ## spc_tbl_ [344 × 8] (S3: spec_tbl_df/tbl_df/tbl/data.frame)
     ##  $ species    : chr [1:344] "Adelie" "Adelie" "Adelie" "Adelie" ...
@@ -66,7 +146,9 @@ file.
 
 ### Summary statistics
 
-    summary(penguins)
+``` r
+summary(penguins)
+```
 
     ##    species             island         
     ##  Length:344         Length:344        
@@ -103,13 +185,17 @@ file.
 
 ### Number of rows and columns
 
-    dim(penguins)
+``` r
+dim(penguins)
+```
 
     ## [1] 344   8
 
 ### Variable names
 
-    names(penguins)
+``` r
+names(penguins)
+```
 
     ## [1] "species"     "island"     
     ## [3] "bill_len"    "bill_dep"   
@@ -118,7 +204,9 @@ file.
 
 ### Check missing values
 
-    colSums(is.na(penguins))
+``` r
+colSums(is.na(penguins))
+```
 
     ##     species      island    bill_len 
     ##           0           0           2 
@@ -129,22 +217,26 @@ file.
 
 ### Export the imported dataset
 
-    write.csv(
-      penguins,
-      "penguins_clean.csv",
-      row.names = FALSE
-    )
+``` r
+write.csv(
+  penguins,
+  "penguins_clean.csv",
+  row.names = FALSE
+)
+```
 
 ### Create and export a summary table
 
-    penguins_summary <- data.frame(
-      Variable = names(penguins),
-      Summary = sapply(penguins, function(x) {
-        paste(capture.output(summary(x)), collapse = "; ")
-      })
-    )
+``` r
+penguins_summary <- data.frame(
+  Variable = names(penguins),
+  Summary = sapply(penguins, function(x) {
+    paste(capture.output(summary(x)), collapse = "; ")
+  })
+)
 
-    head(penguins_summary)
+head(penguins_summary)
+```
 
     ##                Variable
     ## species         species
@@ -161,40 +253,50 @@ file.
     ## flipper_len    Min. 1st Qu.  Median    Mean 3rd Qu. ;   172.0   190.0   197.0   200.9   213.0 ;    Max.    NA's ;   231.0       2 
     ## body_mass      Min. 1st Qu.  Median    Mean 3rd Qu. ;    2700    3550    4050    4202    4750 ;    Max.    NA's ;    6300       2
 
-    write.csv(
-      penguins_summary,
-      "penguins_summary.csv",
-      row.names = FALSE
-    )
+``` r
+write.csv(
+  penguins_summary,
+  "penguins_summary.csv",
+  row.names = FALSE
+)
+```
 
-    library(readxl)
-    ## 1.3 Importing data from a database management system
+``` r
+library(readxl)
+## 1.3 Importing data from a database management system
 
-    ## Importing Data from MySQL/MariaDB
+## Importing Data from MySQL/MariaDB
 
-    ## Importing Data from MySQL/MariaDB
+## Importing Data from MySQL/MariaDB
 
-    ## Importing Data from MySQL/MariaDB
+## Importing Data from MySQL/MariaDB
+```
 
-    library(DBI)
-    library(RMariaDB)
+``` r
+library(DBI)
+library(RMariaDB)
 
-    con <- dbConnect(
-      MariaDB(),
-      host = "localhost",
-      port = 3306,
-      user = "root",
-      password = "",
-      dbname = "student"
-    )
+con <- dbConnect(
+  MariaDB(),
+  host = "localhost",
+  port = 3306,
+  user = "root",
+  password = "",
+  dbname = "student"
+)
+```
 
 # Import students table
 
-      student <- dbReadTable(con, "students")
+``` r
+  student <- dbReadTable(con, "students")
+```
 
 # Display records
 
-      head(student)
+``` r
+  head(student)
+```
 
     ##   student_id student_name marks
     ## 1          1        Alice    85
@@ -205,21 +307,27 @@ head(student)
 
 ### Exploring the students dataset
 
-    tail(student)
+``` r
+tail(student)
+```
 
     ##   student_id student_name marks
     ## 1          1        Alice    85
     ## 2          2         John    72
     ## 3          3         Mary    90
 
-    str(student)
+``` r
+str(student)
+```
 
     ## 'data.frame':    3 obs. of  3 variables:
     ##  $ student_id  : num  1 2 3
     ##  $ student_name: chr  "Alice" "John" "Mary"
     ##  $ marks       : num  85 72 90
 
-    summary(student)
+``` r
+summary(student)
+```
 
     ##    student_id  student_name      
     ##  Min.   :1.0   Length:3          
@@ -236,388 +344,197 @@ head(student)
     ##  3rd Qu.:87.50  
     ##  Max.   :90.00
 
-    dim(student)
+``` r
+dim(student)
+```
 
     ## [1] 3 3
 
-    names(student)
+``` r
+names(student)
+```
 
     ## [1] "student_id"   "student_name"
     ## [3] "marks"
 
-    colSums(is.na(student))
+``` r
+colSums(is.na(student))
+```
 
     ##   student_id student_name        marks 
     ##            0            0            0
 
 ### Exporting the dataset
 
-    write.csv(student, "student.csv", row.names = FALSE)
+``` r
+write.csv(student, "student.csv", row.names = FALSE)
+```
 
 ### Disconnecting from MySQL
 
-    dbDisconnect(con)
+``` r
+dbDisconnect(con)
+```
 
 ## 1.4 Importing data from an online API
 
 The `jsonlite` package is used to retrieve JSON data from the
 JSONPlaceholder users API.
 
-    library(jsonlite)
+``` r
+library(jsonlite)
 
-    api_url <- "https://jsonplaceholder.typicode.com/users"
+api_url <- "https://jsonplaceholder.typicode.com/users"
 
-    api_data <- tryCatch(
-      fromJSON(api_url, flatten = TRUE),
-      error = function(e) {
-        message("The API data could not be retrieved: ", conditionMessage(e))
-        NULL
-      }
-    )
+api_data <- tryCatch(
+  fromJSON(api_url, flatten = TRUE),
+  error = function(e) {
+    message("The API data could not be retrieved: ", conditionMessage(e))
+    NULL
+  }
+)
+```
 
 ### Exploring the API Dataset
 
 **1. First six records**
 
-    head(api_data)
+``` r
+head(api_data)
+```
 
-    ##   id                 name         username
-    ## 1  1        Leanne Graham             Bret
-    ## 2  2         Ervin Howell        Antonette
-    ## 3  3     Clementine Bauch         Samantha
-    ## 4  4     Patricia Lebsack         Karianne
-    ## 5  5     Chelsey Dietrich           Kamren
-    ## 6  6 Mrs. Dennis Schulist Leopoldo_Corkery
-    ##                       email
-    ## 1         Sincere@april.biz
-    ## 2         Shanna@melissa.tv
-    ## 3        Nathan@yesenia.net
-    ## 4 Julianne.OConner@kory.org
-    ## 5  Lucio_Hettinger@annie.ca
-    ## 6   Karley_Dach@jasper.info
-    ##                   phone       website
-    ## 1 1-770-736-8031 x56442 hildegard.org
-    ## 2   010-692-6593 x09125 anastasia.net
-    ## 3        1-463-123-4447   ramiro.info
-    ## 4     493-170-9623 x156      kale.biz
-    ## 5         (254)954-1289  demarco.info
-    ## 6  1-477-935-8478 x6430       ola.org
-    ##      address.street address.suite
-    ## 1       Kulas Light      Apt. 556
-    ## 2     Victor Plains     Suite 879
-    ## 3 Douglas Extension     Suite 847
-    ## 4       Hoeger Mall      Apt. 692
-    ## 5      Skiles Walks     Suite 351
-    ## 6 Norberto Crossing      Apt. 950
-    ##    address.city address.zipcode
-    ## 1   Gwenborough      92998-3874
-    ## 2   Wisokyburgh      90566-7771
-    ## 3 McKenziehaven      59590-4157
-    ## 4   South Elvis      53919-4257
-    ## 5    Roscoeview           33263
-    ## 6 South Christy      23505-1337
-    ##   address.geo.lat address.geo.lng
-    ## 1        -37.3159         81.1496
-    ## 2        -43.9509        -34.4618
-    ## 3        -68.6102        -47.0653
-    ## 4         29.4572       -164.2990
-    ## 5        -31.8129         62.5342
-    ## 6        -71.4197         71.7478
-    ##         company.name
-    ## 1    Romaguera-Crona
-    ## 2       Deckow-Crist
-    ## 3 Romaguera-Jacobson
-    ## 4      Robel-Corkery
-    ## 5        Keebler LLC
-    ## 6  Considine-Lockman
-    ##                        company.catchPhrase
-    ## 1   Multi-layered client-server neural-net
-    ## 2           Proactive didactic contingency
-    ## 3        Face to face bifurcated interface
-    ## 4 Multi-tiered zero tolerance productivity
-    ## 5     User-centric fault-tolerant solution
-    ## 6       Synchronised bottom-line interface
-    ##                             company.bs
-    ## 1          harness real-time e-markets
-    ## 2     synergize scalable supply-chains
-    ## 3      e-enable strategic applications
-    ## 4 transition cutting-edge web services
-    ## 5     revolutionize end-to-end systems
-    ## 6     e-enable innovative applications
+    ## NULL
 
 **2. Last six records**
 
-    tail(api_data)
+``` r
+tail(api_data)
+```
 
-    ##    id                     name
-    ## 5   5         Chelsey Dietrich
-    ## 6   6     Mrs. Dennis Schulist
-    ## 7   7          Kurtis Weissnat
-    ## 8   8 Nicholas Runolfsdottir V
-    ## 9   9          Glenna Reichert
-    ## 10 10       Clementina DuBuque
-    ##            username
-    ## 5            Kamren
-    ## 6  Leopoldo_Corkery
-    ## 7      Elwyn.Skiles
-    ## 8     Maxime_Nienow
-    ## 9          Delphine
-    ## 10   Moriah.Stanton
-    ##                       email
-    ## 5  Lucio_Hettinger@annie.ca
-    ## 6   Karley_Dach@jasper.info
-    ## 7    Telly.Hoeger@billy.biz
-    ## 8      Sherwood@rosamond.me
-    ## 9   Chaim_McDermott@dana.io
-    ## 10   Rey.Padberg@karina.biz
-    ##                   phone      website
-    ## 5         (254)954-1289 demarco.info
-    ## 6  1-477-935-8478 x6430      ola.org
-    ## 7          210.067.6132     elvis.io
-    ## 8     586.493.6943 x140 jacynthe.com
-    ## 9  (775)976-6794 x41206   conrad.com
-    ## 10         024-648-3804  ambrose.net
-    ##       address.street address.suite
-    ## 5       Skiles Walks     Suite 351
-    ## 6  Norberto Crossing      Apt. 950
-    ## 7          Rex Trail     Suite 280
-    ## 8   Ellsworth Summit     Suite 729
-    ## 9         Dayna Park     Suite 449
-    ## 10   Kattie Turnpike     Suite 198
-    ##      address.city address.zipcode
-    ## 5      Roscoeview           33263
-    ## 6   South Christy      23505-1337
-    ## 7       Howemouth      58804-1099
-    ## 8       Aliyaview           45169
-    ## 9  Bartholomebury      76495-3109
-    ## 10    Lebsackbury      31428-2261
-    ##    address.geo.lat address.geo.lng
-    ## 5         -31.8129         62.5342
-    ## 6         -71.4197         71.7478
-    ## 7          24.8918         21.8984
-    ## 8         -14.3990       -120.7677
-    ## 9          24.6463       -168.8889
-    ## 10        -38.2386         57.2232
-    ##         company.name
-    ## 5        Keebler LLC
-    ## 6  Considine-Lockman
-    ## 7        Johns Group
-    ## 8    Abernathy Group
-    ## 9      Yost and Sons
-    ## 10        Hoeger LLC
-    ##                      company.catchPhrase
-    ## 5   User-centric fault-tolerant solution
-    ## 6     Synchronised bottom-line interface
-    ## 7     Configurable multimedia task-force
-    ## 8          Implemented secondary concept
-    ## 9  Switchable contextually-based project
-    ## 10     Centralized empowering task-force
-    ##                          company.bs
-    ## 5  revolutionize end-to-end systems
-    ## 6  e-enable innovative applications
-    ## 7     generate enterprise e-tailers
-    ## 8     e-enable extensible e-tailers
-    ## 9  aggregate real-time technologies
-    ## 10         target end-to-end models
+    ## NULL
 
 **3. Dataset structure**
 
-    str(api_data)
+``` r
+str(api_data)
+```
 
-    ## 'data.frame':    10 obs. of  15 variables:
-    ##  $ id                 : int  1 2 3 4 5 6 7 8 9 10
-    ##  $ name               : chr  "Leanne Graham" "Ervin Howell" "Clementine Bauch" "Patricia Lebsack" ...
-    ##  $ username           : chr  "Bret" "Antonette" "Samantha" "Karianne" ...
-    ##  $ email              : chr  "Sincere@april.biz" "Shanna@melissa.tv" "Nathan@yesenia.net" "Julianne.OConner@kory.org" ...
-    ##  $ phone              : chr  "1-770-736-8031 x56442" "010-692-6593 x09125" "1-463-123-4447" "493-170-9623 x156" ...
-    ##  $ website            : chr  "hildegard.org" "anastasia.net" "ramiro.info" "kale.biz" ...
-    ##  $ address.street     : chr  "Kulas Light" "Victor Plains" "Douglas Extension" "Hoeger Mall" ...
-    ##  $ address.suite      : chr  "Apt. 556" "Suite 879" "Suite 847" "Apt. 692" ...
-    ##  $ address.city       : chr  "Gwenborough" "Wisokyburgh" "McKenziehaven" "South Elvis" ...
-    ##  $ address.zipcode    : chr  "92998-3874" "90566-7771" "59590-4157" "53919-4257" ...
-    ##  $ address.geo.lat    : chr  "-37.3159" "-43.9509" "-68.6102" "29.4572" ...
-    ##  $ address.geo.lng    : chr  "81.1496" "-34.4618" "-47.0653" "-164.2990" ...
-    ##  $ company.name       : chr  "Romaguera-Crona" "Deckow-Crist" "Romaguera-Jacobson" "Robel-Corkery" ...
-    ##  $ company.catchPhrase: chr  "Multi-layered client-server neural-net" "Proactive didactic contingency" "Face to face bifurcated interface" "Multi-tiered zero tolerance productivity" ...
-    ##  $ company.bs         : chr  "harness real-time e-markets" "synergize scalable supply-chains" "e-enable strategic applications" "transition cutting-edge web services" ...
+    ##  NULL
 
 **4. Summary statistics**
 
-    summary(api_data)
+``` r
+summary(api_data)
+```
 
-    ##        id            name          
-    ##  Min.   : 1.00   Length:10         
-    ##  1st Qu.: 3.25   Class :character  
-    ##  Median : 5.50   Mode  :character  
-    ##  Mean   : 5.50                     
-    ##  3rd Qu.: 7.75                     
-    ##  Max.   :10.00                     
-    ##    username            email          
-    ##  Length:10          Length:10         
-    ##  Class :character   Class :character  
-    ##  Mode  :character   Mode  :character  
-    ##                                       
-    ##                                       
-    ##                                       
-    ##     phone             website         
-    ##  Length:10          Length:10         
-    ##  Class :character   Class :character  
-    ##  Mode  :character   Mode  :character  
-    ##                                       
-    ##                                       
-    ##                                       
-    ##  address.street     address.suite     
-    ##  Length:10          Length:10         
-    ##  Class :character   Class :character  
-    ##  Mode  :character   Mode  :character  
-    ##                                       
-    ##                                       
-    ##                                       
-    ##  address.city       address.zipcode   
-    ##  Length:10          Length:10         
-    ##  Class :character   Class :character  
-    ##  Mode  :character   Mode  :character  
-    ##                                       
-    ##                                       
-    ##                                       
-    ##  address.geo.lat    address.geo.lng   
-    ##  Length:10          Length:10         
-    ##  Class :character   Class :character  
-    ##  Mode  :character   Mode  :character  
-    ##                                       
-    ##                                       
-    ##                                       
-    ##  company.name       company.catchPhrase
-    ##  Length:10          Length:10          
-    ##  Class :character   Class :character   
-    ##  Mode  :character   Mode  :character   
-    ##                                        
-    ##                                        
-    ##                                        
-    ##   company.bs       
-    ##  Length:10         
-    ##  Class :character  
-    ##  Mode  :character  
-    ##                    
-    ##                    
-    ## 
+    ## Length  Class   Mode 
+    ##      0   NULL   NULL
 
 **5. Dataset dimensions (rows and columns)**
 
-    dim(api_data)
+``` r
+dim(api_data)
+```
 
-    ## [1] 10 15
+    ## NULL
 
 **6. Column names**
 
-    names(api_data)
+``` r
+names(api_data)
+```
 
-    ##  [1] "id"                 
-    ##  [2] "name"               
-    ##  [3] "username"           
-    ##  [4] "email"              
-    ##  [5] "phone"              
-    ##  [6] "website"            
-    ##  [7] "address.street"     
-    ##  [8] "address.suite"      
-    ##  [9] "address.city"       
-    ## [10] "address.zipcode"    
-    ## [11] "address.geo.lat"    
-    ## [12] "address.geo.lng"    
-    ## [13] "company.name"       
-    ## [14] "company.catchPhrase"
-    ## [15] "company.bs"
-
-**7. Missing values in each column**
-
-    colSums(is.na(api_data))
-
-    ##                  id                name 
-    ##                   0                   0 
-    ##            username               email 
-    ##                   0                   0 
-    ##               phone             website 
-    ##                   0                   0 
-    ##      address.street       address.suite 
-    ##                   0                   0 
-    ##        address.city     address.zipcode 
-    ##                   0                   0 
-    ##     address.geo.lat     address.geo.lng 
-    ##                   0                   0 
-    ##        company.name company.catchPhrase 
-    ##                   0                   0 
-    ##          company.bs 
-    ##                   0
+    ## NULL
 
 # Assignment 2: Basic R Programming and Data Analysis
 
 ## 2.1 Creating vectors and calculating summary statistics
 
-    x <- c(0.5, 0.6)
-    age <- c(20, 35, 32, 29)
+``` r
+x <- c(0.5, 0.6)
+age <- c(20, 35, 32, 29)
 
-    age
+age
+```
 
     ## [1] 20 35 32 29
 
-    summary(age)
+``` r
+summary(age)
+```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu. 
     ##   20.00   26.75   30.50   29.00   32.75 
     ##    Max. 
     ##   35.00
 
-    mean(age)
+``` r
+mean(age)
+```
 
     ## [1] 29
 
 ## 2.2 Logical vectors
 
-    logical_values <- c(TRUE, FALSE)
-    logical_values
+``` r
+logical_values <- c(TRUE, FALSE)
+logical_values
+```
 
     ## [1]  TRUE FALSE
 
 ## 2.3 Character vectors
 
-    character_values <- c("a", "b", "c")
-    gender_values <- c("M", "F", "F", "M")
+``` r
+character_values <- c("a", "b", "c")
+gender_values <- c("M", "F", "F", "M")
 
-    character_values
+character_values
+```
 
     ## [1] "a" "b" "c"
 
-    gender_values
+``` r
+gender_values
+```
 
     ## [1] "M" "F" "F" "M"
 
 ## 2.4 Integer vectors
 
-    integer_values <- 9:29
-    integer_values
+``` r
+integer_values <- 9:29
+integer_values
+```
 
     ##  [1]  9 10 11 12 13 14 15 16 17 18 19 20 21
     ## [14] 22 23 24 25 26 27 28 29
 
 ## 2.5 Complex numbers
 
-    complex_values <- c(1 + 0i, 2 + 4i)
-    complex_values
+``` r
+complex_values <- c(1 + 0i, 2 + 4i)
+complex_values
+```
 
     ## [1] 1+0i 2+4i
 
 ## 2.6 Creating and multiplying matrices
 
-    matrix_x <- matrix(1:6, nrow = 2, ncol = 3)
-    matrix_y <- matrix(1:6, nrow = 3, ncol = 2)
+``` r
+matrix_x <- matrix(1:6, nrow = 2, ncol = 3)
+matrix_y <- matrix(1:6, nrow = 3, ncol = 2)
 
-    matrix_x
+matrix_x
+```
 
     ##      [,1] [,2] [,3]
     ## [1,]    1    3    5
     ## [2,]    2    4    6
 
-    matrix_y
+``` r
+matrix_y
+```
 
     ##      [,1] [,2]
     ## [1,]    1    4
@@ -626,7 +543,9 @@ JSONPlaceholder users API.
 
 Matrix multiplication:
 
-    matrix_x %*% matrix_y
+``` r
+matrix_x %*% matrix_y
+```
 
     ##      [,1] [,2]
     ## [1,]   22   49
@@ -634,8 +553,10 @@ Matrix multiplication:
 
 ## 2.7 Creating a list
 
-    my_list <- list(1, "a", TRUE, 1 + 4i)
-    my_list
+``` r
+my_list <- list(1, "a", TRUE, 1 + 4i)
+my_list
+```
 
     ## [[1]]
     ## [1] 1
@@ -651,50 +572,60 @@ Matrix multiplication:
 
 ## 2.8 Creating a factor
 
-    response_factor <- factor(c("yes", "yes", "no", "yes", "no"))
-    response_factor
+``` r
+response_factor <- factor(c("yes", "yes", "no", "yes", "no"))
+response_factor
+```
 
     ## [1] yes yes no  yes no 
     ## Levels: no yes
 
 ## 2.9 Identifying and handling missing values
 
-    missing_vector <- c(1, 2, NA, 4, NA, 5)
+``` r
+missing_vector <- c(1, 2, NA, 4, NA, 5)
 
-    is.na(missing_vector)
+is.na(missing_vector)
+```
 
     ## [1] FALSE FALSE  TRUE FALSE  TRUE FALSE
 
 The following example identifies complete observations across two
 vectors.
 
-    x_values <- c(1, 2, NA, 4, NA, 5)
-    y_values <- c("a", "b", NA, "d", NA, "f")
+``` r
+x_values <- c(1, 2, NA, 4, NA, 5)
+y_values <- c("a", "b", NA, "d", NA, "f")
 
-    complete_rows <- complete.cases(x_values, y_values)
-    complete_rows
+complete_rows <- complete.cases(x_values, y_values)
+complete_rows
+```
 
     ## [1]  TRUE  TRUE FALSE  TRUE FALSE  TRUE
 
-    sum(complete_rows)
+``` r
+sum(complete_rows)
+```
 
     ## [1] 4
 
 ## 2.10 Creating a data frame
 
-    studentID <- c(1, 2, 3, 4, 5)
-    math_score <- c(12, 17, 10, 9, NA)
-    gender <- c("M", "F", "M", "M", "F")
-    it_score <- c(13, 18, 11, 10, 19)
+``` r
+studentID <- c(1, 2, 3, 4, 5)
+math_score <- c(12, 17, 10, 9, NA)
+gender <- c("M", "F", "M", "M", "F")
+it_score <- c(13, 18, 11, 10, 19)
 
-    scoredata <- data.frame(
-      studentID,
-      gender,
-      math_score,
-      it_score
-    )
+scoredata <- data.frame(
+  studentID,
+  gender,
+  math_score,
+  it_score
+)
 
-    scoredata
+scoredata
+```
 
     ##   studentID gender math_score it_score
     ## 1         1      M         12       13
@@ -705,24 +636,26 @@ vectors.
 
 ## 2.11 Creating a data frame for height and weight
 
-    data_class <- data.frame(
-      HEIGHT = c(
-        161, 155, 158, 170, 160, 156, 162, 158, 158, 167,
-        160, 155, 154, 155, 157, 157, 160, 158, 160, 160,
-        152, 154, 150, 161, 162, 164, 161, 155, 159, 163,
-        159, 160, 158, 165, 156, 163, 155, 164, 163, 168,
-        157, 164, 154
-      ),
-      WEIGHT = c(
-        50, 49, 42, 65, 60, 52, 58, 46, 45, 51,
-        60, 42, 53, 48, 48, 48, 53, 52, 51, 53,
-        44, 56, 63, 52, 57, 49, 52, 54, 46, 50,
-        61, 55, 45, 63, 60, 56, 52, 47, 52, 55,
-        48, 58, 55
-      )
-    )
+``` r
+data_class <- data.frame(
+  HEIGHT = c(
+    161, 155, 158, 170, 160, 156, 162, 158, 158, 167,
+    160, 155, 154, 155, 157, 157, 160, 158, 160, 160,
+    152, 154, 150, 161, 162, 164, 161, 155, 159, 163,
+    159, 160, 158, 165, 156, 163, 155, 164, 163, 168,
+    157, 164, 154
+  ),
+  WEIGHT = c(
+    50, 49, 42, 65, 60, 52, 58, 46, 45, 51,
+    60, 42, 53, 48, 48, 48, 53, 52, 51, 53,
+    44, 56, 63, 52, 57, 49, 52, 54, 46, 50,
+    61, 55, 45, 63, 60, 56, 52, 47, 52, 55,
+    48, 58, 55
+  )
+)
 
-    head(data_class)
+head(data_class)
+```
 
     ##   HEIGHT WEIGHT
     ## 1    161     50
@@ -734,7 +667,9 @@ vectors.
 
 ### Print, summarize, and inspect the data frame
 
-    print(data_class)
+``` r
+print(data_class)
+```
 
     ##    HEIGHT WEIGHT
     ## 1     161     50
@@ -781,7 +716,9 @@ vectors.
     ## 42    164     58
     ## 43    154     55
 
-    summary(data_class)
+``` r
+summary(data_class)
+```
 
     ##      HEIGHT          WEIGHT     
     ##  Min.   :150.0   Min.   :42.00  
@@ -791,7 +728,9 @@ vectors.
     ##  3rd Qu.:162.0   3rd Qu.:56.00  
     ##  Max.   :170.0   Max.   :65.00
 
-    str(data_class)
+``` r
+str(data_class)
+```
 
     ## 'data.frame':    43 obs. of  2 variables:
     ##  $ HEIGHT: num  161 155 158 170 160 156 162 158 158 167 ...
@@ -799,13 +738,17 @@ vectors.
 
 ### Export the data frame
 
-    write.csv(data_class, "data_class.csv", row.names = FALSE)
+``` r
+write.csv(data_class, "data_class.csv", row.names = FALSE)
+```
 
 ## 2.12 Applying functions to rows and columns
 
 Calculate the mean of each row:
 
-    apply(data_class, 1, mean)
+``` r
+apply(data_class, 1, mean)
+```
 
     ##  [1] 105.5 102.0 100.0 117.5 110.0 104.0
     ##  [7] 110.0 102.0 101.5 109.0 110.0  98.5
@@ -818,18 +761,24 @@ Calculate the mean of each row:
 
 Calculate the standard deviation of each column:
 
-    apply(data_class, 2, sd)
+``` r
+apply(data_class, 2, sd)
+```
 
     ##   HEIGHT   WEIGHT 
     ## 4.304444 5.750150
 
 Calculate the mean and standard deviation of height and weight:
 
-    c(mean(data_class$HEIGHT), sd(data_class$HEIGHT))
+``` r
+c(mean(data_class$HEIGHT), sd(data_class$HEIGHT))
+```
 
     ## [1] 159.255814   4.304444
 
-    c(mean(data_class$WEIGHT), sd(data_class$WEIGHT))
+``` r
+c(mean(data_class$WEIGHT), sd(data_class$WEIGHT))
+```
 
     ## [1] 52.46512  5.75015
 
@@ -837,8 +786,10 @@ Calculate the mean and standard deviation of height and weight:
 
 The `iris` dataset is already included in R.
 
-    data("iris")
-    head(iris)
+``` r
+data("iris")
+head(iris)
+```
 
     ##   Sepal.Length Sepal.Width Petal.Length
     ## 1          5.1         3.5          1.4
@@ -857,27 +808,37 @@ The `iris` dataset is already included in R.
 
 Calculate the overall mean petal length:
 
-    mean(iris$Petal.Length)
+``` r
+mean(iris$Petal.Length)
+```
 
     ## [1] 3.758
 
 Calculate mean petal length for each species:
 
-    mean(iris$Petal.Length[iris$Species == "setosa"])
+``` r
+mean(iris$Petal.Length[iris$Species == "setosa"])
+```
 
     ## [1] 1.462
 
-    mean(iris$Petal.Length[iris$Species == "versicolor"])
+``` r
+mean(iris$Petal.Length[iris$Species == "versicolor"])
+```
 
     ## [1] 4.26
 
-    mean(iris$Petal.Length[iris$Species == "virginica"])
+``` r
+mean(iris$Petal.Length[iris$Species == "virginica"])
+```
 
     ## [1] 5.552
 
 The `by()` function can also calculate summaries by species.
 
-    by(iris$Petal.Length, iris$Species, mean)
+``` r
+by(iris$Petal.Length, iris$Species, mean)
+```
 
     ## iris$Species: setosa
     ## [1] 1.462
@@ -888,7 +849,9 @@ The `by()` function can also calculate summaries by species.
     ## iris$Species: virginica
     ## [1] 5.552
 
-    by(iris$Petal.Length, iris$Species, summary)
+``` r
+by(iris$Petal.Length, iris$Species, summary)
+```
 
     ## iris$Species: setosa
     ##    Min. 1st Qu.  Median    Mean 3rd Qu. 
@@ -910,22 +873,26 @@ The `by()` function can also calculate summaries by species.
 
 ## 2.14 Visualizing the iris dataset using a boxplot
 
-    boxplot(
-      Sepal.Length ~ Species,
-      data = iris,
-      main = "Comparison of Sepal Length by Species",
-      xlab = "Species",
-      ylab = "Sepal Length"
-    )
+``` r
+boxplot(
+  Sepal.Length ~ Species,
+  data = iris,
+  main = "Comparison of Sepal Length by Species",
+  xlab = "Species",
+  ylab = "Sepal Length"
+)
+```
 
-![](Assignment_1_and_2_R_Programming_Report_files/figure-markdown_strict/unnamed-chunk-53-1.png)
+![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-52-1.png)<!-- -->
 
 ## 2.15 Relationship between two categorical variables
 
 The `UCBAdmissions` dataset is built into R.
 
-    data("UCBAdmissions")
-    head(UCBAdmissions)
+``` r
+data("UCBAdmissions")
+head(UCBAdmissions)
+```
 
     ## , , Dept = A
     ## 
@@ -971,8 +938,10 @@ The `UCBAdmissions` dataset is built into R.
 
 Convert it into a data frame:
 
-    ucba <- data.frame(UCBAdmissions)
-    head(ucba)
+``` r
+ucba <- data.frame(UCBAdmissions)
+head(ucba)
+```
 
     ##      Admit Gender Dept Freq
     ## 1 Admitted   Male    A  512
@@ -984,8 +953,10 @@ Convert it into a data frame:
 
 Create a table of gender and admission:
 
-    cross <- xtabs(Freq ~ Gender + Admit, data = ucba)
-    cross
+``` r
+cross <- xtabs(Freq ~ Gender + Admit, data = ucba)
+cross
+```
 
     ##         Admit
     ## Gender   Admitted Rejected
@@ -994,7 +965,9 @@ Create a table of gender and admission:
 
 Calculate admission proportions by gender:
 
-    prop.table(cross, 1)
+``` r
+prop.table(cross, 1)
+```
 
     ##         Admit
     ## Gender    Admitted  Rejected
@@ -1003,19 +976,23 @@ Calculate admission proportions by gender:
 
 ### Exploring one department
 
-    cross2 <- xtabs(
-      Freq ~ Gender + Admit,
-      data = ucba[ucba$Dept == "F", ]
-    )
+``` r
+cross2 <- xtabs(
+  Freq ~ Gender + Admit,
+  data = ucba[ucba$Dept == "F", ]
+)
 
-    cross2
+cross2
+```
 
     ##         Admit
     ## Gender   Admitted Rejected
     ##   Male         22      351
     ##   Female       24      317
 
-    prop.table(cross2, 1)
+``` r
+prop.table(cross2, 1)
+```
 
     ##         Admit
     ## Gender     Admitted   Rejected
@@ -1024,42 +1001,48 @@ Calculate admission proportions by gender:
 
 ## 2.16 Creating bar plots
 
-    dat <- read.table(
-      text = "ProdA ProdB ProdC ProdD
-    1 110 50 60 70
-    2 120 50 80 65",
-      header = TRUE
-    )
+``` r
+dat <- read.table(
+  text = "ProdA ProdB ProdC ProdD
+1 110 50 60 70
+2 120 50 80 65",
+  header = TRUE
+)
 
-    dat
+dat
+```
 
     ##   ProdA ProdB ProdC ProdD
     ## 1   110    50    60    70
     ## 2   120    50    80    65
 
-    barplot(
-      as.matrix(dat),
-      beside = TRUE,
-      main = "Product Values",
-      xlab = "Product",
-      ylab = "Value",
-      legend.text = TRUE
-    )
+``` r
+barplot(
+  as.matrix(dat),
+  beside = TRUE,
+  main = "Product Values",
+  xlab = "Product",
+  ylab = "Value",
+  legend.text = TRUE
+)
+```
 
-![](Assignment_1_and_2_R_Programming_Report_files/figure-markdown_strict/unnamed-chunk-60-1.png)
+![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-59-1.png)<!-- -->
 
 A second bar plot:
 
-    dat2 <- read.table(
-      text = "A B C D E F G
-    1 10 80 30 90 70 60 90
-    2 20 50 70 50 40 10 40
-    3 60 80 80 60 60 30 160
-    4 20 40 70 80 20 10 70",
-      header = TRUE
-    )
+``` r
+dat2 <- read.table(
+  text = "A B C D E F G
+1 10 80 30 90 70 60 90
+2 20 50 70 50 40 10 40
+3 60 80 80 60 60 30 160
+4 20 40 70 80 20 10 70",
+  header = TRUE
+)
 
-    dat2
+dat2
+```
 
     ##    A  B  C  D  E  F   G
     ## 1 10 80 30 90 70 60  90
@@ -1067,42 +1050,52 @@ A second bar plot:
     ## 3 60 80 80 60 60 30 160
     ## 4 20 40 70 80 20 10  70
 
-    barplot(as.matrix(dat2), main = "Bar Plot of A to G")
+``` r
+barplot(as.matrix(dat2), main = "Bar Plot of A to G")
+```
 
-![](Assignment_1_and_2_R_Programming_Report_files/figure-markdown_strict/unnamed-chunk-61-1.png)
+![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-60-1.png)<!-- -->
 
 ## 2.17 Scatter plots and correlation
 
-    plot(
-      WEIGHT ~ HEIGHT,
-      data = data_class,
-      main = "Relationship Between Height and Weight",
-      xlab = "Height (cm)",
-      ylab = "Weight (kg)"
-    )
+``` r
+plot(
+  WEIGHT ~ HEIGHT,
+  data = data_class,
+  main = "Relationship Between Height and Weight",
+  xlab = "Height (cm)",
+  ylab = "Weight (kg)"
+)
+```
 
-![](Assignment_1_and_2_R_Programming_Report_files/figure-markdown_strict/unnamed-chunk-62-1.png)
+![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-61-1.png)<!-- -->
 
-    plot(
-      data_class$HEIGHT,
-      data_class$WEIGHT,
-      main = "Height versus Weight",
-      xlab = "Height",
-      ylab = "Weight"
-    )
+``` r
+plot(
+  data_class$HEIGHT,
+  data_class$WEIGHT,
+  main = "Height versus Weight",
+  xlab = "Height",
+  ylab = "Weight"
+)
+```
 
-![](Assignment_1_and_2_R_Programming_Report_files/figure-markdown_strict/unnamed-chunk-63-1.png)
+![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-62-1.png)<!-- -->
 
 Calculate the correlation:
 
-    cor(data_class$HEIGHT, data_class$WEIGHT)
+``` r
+cor(data_class$HEIGHT, data_class$WEIGHT)
+```
 
     ## [1] 0.2663495
 
 ## 2.18 Linear regression model
 
-    data_lm <- lm(HEIGHT ~ WEIGHT, data = data_class)
-    summary(data_lm)
+``` r
+data_lm <- lm(HEIGHT ~ WEIGHT, data = data_class)
+summary(data_lm)
+```
 
     ## 
     ## Call:
@@ -1132,70 +1125,82 @@ Calculate the correlation:
 
 Plot the relationship and regression line:
 
-    plot(
-      WEIGHT ~ HEIGHT,
-      data = data_class,
-      main = "Linear Relationship Between Height and Weight",
-      xlab = "Height",
-      ylab = "Weight"
-    )
+``` r
+plot(
+  WEIGHT ~ HEIGHT,
+  data = data_class,
+  main = "Linear Relationship Between Height and Weight",
+  xlab = "Height",
+  ylab = "Weight"
+)
 
-    abline(lm(WEIGHT ~ HEIGHT, data = data_class))
+abline(lm(WEIGHT ~ HEIGHT, data = data_class))
+```
 
-![](Assignment_1_and_2_R_Programming_Report_files/figure-markdown_strict/unnamed-chunk-66-1.png)
+![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-65-1.png)<!-- -->
 
 Diagnostic plots for the regression model:
 
-    plot(data_lm)
+``` r
+plot(data_lm)
+```
 
-![](Assignment_1_and_2_R_Programming_Report_files/figure-markdown_strict/unnamed-chunk-67-1.png)![](Assignment_1_and_2_R_Programming_Report_files/figure-markdown_strict/unnamed-chunk-67-2.png)![](Assignment_1_and_2_R_Programming_Report_files/figure-markdown_strict/unnamed-chunk-67-3.png)![](Assignment_1_and_2_R_Programming_Report_files/figure-markdown_strict/unnamed-chunk-67-4.png)
+![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-66-1.png)<!-- -->![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-66-2.png)<!-- -->![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-66-3.png)<!-- -->![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-66-4.png)<!-- -->
 
 ## 2.19 Histograms
 
-    hist(
-      data_class$HEIGHT,
-      main = "Distribution of Height",
-      xlab = "Height"
-    )
+``` r
+hist(
+  data_class$HEIGHT,
+  main = "Distribution of Height",
+  xlab = "Height"
+)
+```
 
-![](Assignment_1_and_2_R_Programming_Report_files/figure-markdown_strict/unnamed-chunk-68-1.png)
+![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-67-1.png)<!-- -->
 
-    hist(
-      data_class$WEIGHT,
-      main = "Distribution of Weight",
-      xlab = "Weight",
-      col = "blue"
-    )
+``` r
+hist(
+  data_class$WEIGHT,
+  main = "Distribution of Weight",
+  xlab = "Weight",
+  col = "blue"
+)
+```
 
-![](Assignment_1_and_2_R_Programming_Report_files/figure-markdown_strict/unnamed-chunk-69-1.png)
+![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-68-1.png)<!-- -->
 
 ## 2.20 Adding a smooth line to a plot
 
-    plot(
-      WEIGHT ~ HEIGHT,
-      data = data_class,
-      main = "Height and Weight with a Smooth Trend",
-      xlab = "Height",
-      ylab = "Weight"
-    )
+``` r
+plot(
+  WEIGHT ~ HEIGHT,
+  data = data_class,
+  main = "Height and Weight with a Smooth Trend",
+  xlab = "Height",
+  ylab = "Weight"
+)
 
-    abline(lm(WEIGHT ~ HEIGHT, data = data_class))
-    lines(
-      lowess(data_class$HEIGHT, data_class$WEIGHT),
-      col = "blue"
-    )
+abline(lm(WEIGHT ~ HEIGHT, data = data_class))
+lines(
+  lowess(data_class$HEIGHT, data_class$WEIGHT),
+  col = "blue"
+)
+```
 
-![](Assignment_1_and_2_R_Programming_Report_files/figure-markdown_strict/unnamed-chunk-70-1.png)
+![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-69-1.png)<!-- -->
 
 ## 2.21 Creating a body mass index (BMI) variable
 
 BMI is calculated as weight in kilograms divided by height in metres
 squared.
 
-    BMI <- data_class$WEIGHT / (data_class$HEIGHT / 100)^2
-    BMI <- round(BMI, 2)
+``` r
+BMI <- data_class$WEIGHT / (data_class$HEIGHT / 100)^2
+BMI <- round(BMI, 2)
 
-    head(cbind(data_class, BMI), 5)
+head(cbind(data_class, BMI), 5)
+```
 
     ##   HEIGHT WEIGHT   BMI
     ## 1    161     50 19.29
@@ -1206,8 +1211,10 @@ squared.
 
 Create a new data frame containing BMI:
 
-    new_data_class <- cbind(data_class, BMI)
-    tail(new_data_class, 10)
+``` r
+new_data_class <- cbind(data_class, BMI)
+tail(new_data_class, 10)
+```
 
     ##    HEIGHT WEIGHT   BMI
     ## 34    165     63 23.14
@@ -1223,7 +1230,9 @@ Create a new data frame containing BMI:
 
 Summary of BMI:
 
-    summary(BMI)
+``` r
+summary(BMI)
+```
 
     ##    Min. 1st Qu.  Median    Mean 3rd Qu. 
     ##   16.82   19.16   20.40   20.70   22.23 
@@ -1232,7 +1241,9 @@ Summary of BMI:
 
 Stem-and-leaf display:
 
-    stem(BMI, scale = 2)
+``` r
+stem(BMI, scale = 2)
+```
 
     ## 
     ##   The decimal point is at the |
@@ -1255,60 +1266,72 @@ Stem-and-leaf display:
 
 Display the current date:
 
-    today <- Sys.Date()
-    today
+``` r
+today <- Sys.Date()
+today
+```
 
-    ## [1] "2026-10-31"
+    ## [1] "2026-11-02"
 
 Format the date as month, day, and year:
 
-    format(today, format = "%B %d %Y")
+``` r
+format(today, format = "%B %d %Y")
+```
 
-    ## [1] "October 31 2026"
+    ## [1] "November 02 2026"
 
 Display the day of the week:
 
-    format(today, format = "%A")
+``` r
+format(today, format = "%A")
+```
 
-    ## [1] "Saturday"
+    ## [1] "Monday"
 
 Calculate the number of days between two dates:
 
-    dob <- as.Date("2000-01-01")
-    reference_date <- as.Date("2026-10-31")
+``` r
+dob <- as.Date("2000-01-01")
+reference_date <- as.Date("2026-10-31")
 
-    difftime(reference_date, dob, units = "days")
+difftime(reference_date, dob, units = "days")
+```
 
     ## Time difference of 9800 days
 
 Another way to calculate the difference:
 
-    startdate <- as.Date("2000-01-01")
-    enddate <- as.Date("2026-10-31")
+``` r
+startdate <- as.Date("2000-01-01")
+enddate <- as.Date("2026-10-31")
 
-    days <- enddate - startdate
-    days
+days <- enddate - startdate
+days
+```
 
     ## Time difference of 9800 days
 
 ## 2.23 Creating a leadership dataset
 
-    manager <- c(1, 2, 3, 4, 5)
-    country <- c("US", "US", "UK", "UK", "UK")
-    gender <- c("M", "F", "F", "M", "F")
-    age <- c(32, 45, 25, 39, 99)
-    q1 <- c(5, 3, 3, 3, 2)
-    q2 <- c(4, 5, 5, 3, 2)
-    q3 <- c(5, 2, 5, 4, 1)
-    q4 <- c(5, 5, 5, NA, 2)
-    q5 <- c(5, 5, 2, NA, 1)
+``` r
+manager <- c(1, 2, 3, 4, 5)
+country <- c("US", "US", "UK", "UK", "UK")
+gender <- c("M", "F", "F", "M", "F")
+age <- c(32, 45, 25, 39, 99)
+q1 <- c(5, 3, 3, 3, 2)
+q2 <- c(4, 5, 5, 3, 2)
+q3 <- c(5, 2, 5, 4, 1)
+q4 <- c(5, 5, 5, NA, 2)
+q5 <- c(5, 5, 2, NA, 1)
 
-    leadership <- data.frame(
-      manager, country, gender, age,
-      q1, q2, q3, q4, q5
-    )
+leadership <- data.frame(
+  manager, country, gender, age,
+  q1, q2, q3, q4, q5
+)
 
-    leadership
+leadership
+```
 
     ##   manager country gender age q1 q2 q3 q4
     ## 1       1      US      M  32  5  4  5  5
@@ -1323,7 +1346,9 @@ Another way to calculate the difference:
     ## 4 NA
     ## 5  1
 
-    str(leadership)
+``` r
+str(leadership)
+```
 
     ## 'data.frame':    5 obs. of  9 variables:
     ##  $ manager: num  1 2 3 4 5
@@ -1336,7 +1361,9 @@ Another way to calculate the difference:
     ##  $ q4     : num  5 5 5 NA 2
     ##  $ q5     : num  5 5 2 NA 1
 
-    names(leadership)
+``` r
+names(leadership)
+```
 
     ## [1] "manager" "country" "gender"  "age"    
     ## [5] "q1"      "q2"      "q3"      "q4"     
@@ -1346,8 +1373,10 @@ Another way to calculate the difference:
 
 Replace the age value 99 with a missing value:
 
-    leadership$age[leadership$age == 99] <- NA
-    leadership
+``` r
+leadership$age[leadership$age == 99] <- NA
+leadership
+```
 
     ##   manager country gender age q1 q2 q3 q4
     ## 1       1      US      M  32  5  4  5  5
@@ -1364,21 +1393,23 @@ Replace the age value 99 with a missing value:
 
 Create age categories:
 
-    leadership$agecat <- ifelse(
-      is.na(leadership$age),
-      NA,
-      ifelse(
-        leadership$age > 75,
-        "Elder",
-        ifelse(
-          leadership$age >= 35,
-          "Middle Aged",
-          "Young"
-        )
-      )
+``` r
+leadership$agecat <- ifelse(
+  is.na(leadership$age),
+  NA,
+  ifelse(
+    leadership$age > 75,
+    "Elder",
+    ifelse(
+      leadership$age >= 35,
+      "Middle Aged",
+      "Young"
     )
+  )
+)
 
-    leadership
+leadership
+```
 
     ##   manager country gender age q1 q2 q3 q4
     ## 1       1      US      M  32  5  4  5  5
@@ -1395,7 +1426,9 @@ Create age categories:
 
 Check missing values in the questionnaire variables:
 
-    is.na(leadership[, 5:9])
+``` r
+is.na(leadership[, 5:9])
+```
 
     ##         q1    q2    q3    q4    q5
     ## [1,] FALSE FALSE FALSE FALSE FALSE
@@ -1406,8 +1439,10 @@ Check missing values in the questionnaire variables:
 
 Remove rows containing missing values:
 
-    newdata <- na.omit(leadership)
-    newdata
+``` r
+newdata <- na.omit(leadership)
+newdata
+```
 
     ##   manager country gender age q1 q2 q3 q4
     ## 1       1      US      M  32  5  4  5  5
@@ -1422,15 +1457,19 @@ Remove rows containing missing values:
 
 Order the leadership records by age:
 
-    order(leadership$age)
+``` r
+order(leadership$age)
+```
 
     ## [1] 3 1 4 2 5
 
 Select questionnaire variables:
 
-    myvars <- c("q1", "q2", "q3", "q4", "q5")
-    newdata3 <- leadership[myvars]
-    newdata3
+``` r
+myvars <- c("q1", "q2", "q3", "q4", "q5")
+newdata3 <- leadership[myvars]
+newdata3
+```
 
     ##   q1 q2 q3 q4 q5
     ## 1  5  4  5  5  5
@@ -1441,8 +1480,10 @@ Select questionnaire variables:
 
 Select columns by position:
 
-    newdata4 <- leadership[, c(-1, -2)]
-    head(newdata4)
+``` r
+newdata4 <- leadership[, c(-1, -2)]
+head(newdata4)
+```
 
     ##   gender age q1 q2 q3 q4 q5      agecat
     ## 1      M  32  5  4  5  5  5       Young
@@ -1453,17 +1494,23 @@ Select columns by position:
 
 Select individual columns:
 
-    leadership[[4]]
+``` r
+leadership[[4]]
+```
 
     ## [1] 32 45 25 39 NA
 
-    leadership$age
+``` r
+leadership$age
+```
 
     ## [1] 32 45 25 39 NA
 
 Select specific rows:
 
-    leadership[c(2, 4, 5), ]
+``` r
+leadership[c(2, 4, 5), ]
+```
 
     ##   manager country gender age q1 q2 q3 q4
     ## 2       2      US      F  45  3  5  2  5
@@ -1476,13 +1523,15 @@ Select specific rows:
 
 Select records based on age:
 
-    newdata7 <- subset(
-      leadership,
-      age >= 35 | age < 24,
-      select = c(q1, q2, q3, q4, q5)
-    )
+``` r
+newdata7 <- subset(
+  leadership,
+  age >= 35 | age < 24,
+  select = c(q1, q2, q3, q4, q5)
+)
 
-    newdata7
+newdata7
+```
 
     ##   q1 q2 q3 q4 q5
     ## 2  3  5  2  5  5
@@ -1490,11 +1539,13 @@ Select records based on age:
 
 Select male managers older than 30:
 
-    male_managers <- leadership[
-      leadership$gender == "M" & leadership$age > 30,
-    ]
+``` r
+male_managers <- leadership[
+  leadership$gender == "M" & leadership$age > 30,
+]
 
-    male_managers
+male_managers
+```
 
     ##   manager country gender age q1 q2 q3 q4
     ## 1       1      US      M  32  5  4  5  5
