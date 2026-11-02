@@ -403,7 +403,69 @@ api_data <- tryCatch(
 head(api_data)
 ```
 
-    ## NULL
+    ##   id                 name         username
+    ## 1  1        Leanne Graham             Bret
+    ## 2  2         Ervin Howell        Antonette
+    ## 3  3     Clementine Bauch         Samantha
+    ## 4  4     Patricia Lebsack         Karianne
+    ## 5  5     Chelsey Dietrich           Kamren
+    ## 6  6 Mrs. Dennis Schulist Leopoldo_Corkery
+    ##                       email
+    ## 1         Sincere@april.biz
+    ## 2         Shanna@melissa.tv
+    ## 3        Nathan@yesenia.net
+    ## 4 Julianne.OConner@kory.org
+    ## 5  Lucio_Hettinger@annie.ca
+    ## 6   Karley_Dach@jasper.info
+    ##                   phone       website
+    ## 1 1-770-736-8031 x56442 hildegard.org
+    ## 2   010-692-6593 x09125 anastasia.net
+    ## 3        1-463-123-4447   ramiro.info
+    ## 4     493-170-9623 x156      kale.biz
+    ## 5         (254)954-1289  demarco.info
+    ## 6  1-477-935-8478 x6430       ola.org
+    ##      address.street address.suite
+    ## 1       Kulas Light      Apt. 556
+    ## 2     Victor Plains     Suite 879
+    ## 3 Douglas Extension     Suite 847
+    ## 4       Hoeger Mall      Apt. 692
+    ## 5      Skiles Walks     Suite 351
+    ## 6 Norberto Crossing      Apt. 950
+    ##    address.city address.zipcode
+    ## 1   Gwenborough      92998-3874
+    ## 2   Wisokyburgh      90566-7771
+    ## 3 McKenziehaven      59590-4157
+    ## 4   South Elvis      53919-4257
+    ## 5    Roscoeview           33263
+    ## 6 South Christy      23505-1337
+    ##   address.geo.lat address.geo.lng
+    ## 1        -37.3159         81.1496
+    ## 2        -43.9509        -34.4618
+    ## 3        -68.6102        -47.0653
+    ## 4         29.4572       -164.2990
+    ## 5        -31.8129         62.5342
+    ## 6        -71.4197         71.7478
+    ##         company.name
+    ## 1    Romaguera-Crona
+    ## 2       Deckow-Crist
+    ## 3 Romaguera-Jacobson
+    ## 4      Robel-Corkery
+    ## 5        Keebler LLC
+    ## 6  Considine-Lockman
+    ##                        company.catchPhrase
+    ## 1   Multi-layered client-server neural-net
+    ## 2           Proactive didactic contingency
+    ## 3        Face to face bifurcated interface
+    ## 4 Multi-tiered zero tolerance productivity
+    ## 5     User-centric fault-tolerant solution
+    ## 6       Synchronised bottom-line interface
+    ##                             company.bs
+    ## 1          harness real-time e-markets
+    ## 2     synergize scalable supply-chains
+    ## 3      e-enable strategic applications
+    ## 4 transition cutting-edge web services
+    ## 5     revolutionize end-to-end systems
+    ## 6     e-enable innovative applications
 
 **2. Last six records**
 
@@ -411,7 +473,76 @@ head(api_data)
 tail(api_data)
 ```
 
-    ## NULL
+    ##    id                     name
+    ## 5   5         Chelsey Dietrich
+    ## 6   6     Mrs. Dennis Schulist
+    ## 7   7          Kurtis Weissnat
+    ## 8   8 Nicholas Runolfsdottir V
+    ## 9   9          Glenna Reichert
+    ## 10 10       Clementina DuBuque
+    ##            username
+    ## 5            Kamren
+    ## 6  Leopoldo_Corkery
+    ## 7      Elwyn.Skiles
+    ## 8     Maxime_Nienow
+    ## 9          Delphine
+    ## 10   Moriah.Stanton
+    ##                       email
+    ## 5  Lucio_Hettinger@annie.ca
+    ## 6   Karley_Dach@jasper.info
+    ## 7    Telly.Hoeger@billy.biz
+    ## 8      Sherwood@rosamond.me
+    ## 9   Chaim_McDermott@dana.io
+    ## 10   Rey.Padberg@karina.biz
+    ##                   phone      website
+    ## 5         (254)954-1289 demarco.info
+    ## 6  1-477-935-8478 x6430      ola.org
+    ## 7          210.067.6132     elvis.io
+    ## 8     586.493.6943 x140 jacynthe.com
+    ## 9  (775)976-6794 x41206   conrad.com
+    ## 10         024-648-3804  ambrose.net
+    ##       address.street address.suite
+    ## 5       Skiles Walks     Suite 351
+    ## 6  Norberto Crossing      Apt. 950
+    ## 7          Rex Trail     Suite 280
+    ## 8   Ellsworth Summit     Suite 729
+    ## 9         Dayna Park     Suite 449
+    ## 10   Kattie Turnpike     Suite 198
+    ##      address.city address.zipcode
+    ## 5      Roscoeview           33263
+    ## 6   South Christy      23505-1337
+    ## 7       Howemouth      58804-1099
+    ## 8       Aliyaview           45169
+    ## 9  Bartholomebury      76495-3109
+    ## 10    Lebsackbury      31428-2261
+    ##    address.geo.lat address.geo.lng
+    ## 5         -31.8129         62.5342
+    ## 6         -71.4197         71.7478
+    ## 7          24.8918         21.8984
+    ## 8         -14.3990       -120.7677
+    ## 9          24.6463       -168.8889
+    ## 10        -38.2386         57.2232
+    ##         company.name
+    ## 5        Keebler LLC
+    ## 6  Considine-Lockman
+    ## 7        Johns Group
+    ## 8    Abernathy Group
+    ## 9      Yost and Sons
+    ## 10        Hoeger LLC
+    ##                      company.catchPhrase
+    ## 5   User-centric fault-tolerant solution
+    ## 6     Synchronised bottom-line interface
+    ## 7     Configurable multimedia task-force
+    ## 8          Implemented secondary concept
+    ## 9  Switchable contextually-based project
+    ## 10     Centralized empowering task-force
+    ##                          company.bs
+    ## 5  revolutionize end-to-end systems
+    ## 6  e-enable innovative applications
+    ## 7     generate enterprise e-tailers
+    ## 8     e-enable extensible e-tailers
+    ## 9  aggregate real-time technologies
+    ## 10         target end-to-end models
 
 **3. Dataset structure**
 
@@ -419,7 +550,22 @@ tail(api_data)
 str(api_data)
 ```
 
-    ##  NULL
+    ## 'data.frame':    10 obs. of  15 variables:
+    ##  $ id                 : int  1 2 3 4 5 6 7 8 9 10
+    ##  $ name               : chr  "Leanne Graham" "Ervin Howell" "Clementine Bauch" "Patricia Lebsack" ...
+    ##  $ username           : chr  "Bret" "Antonette" "Samantha" "Karianne" ...
+    ##  $ email              : chr  "Sincere@april.biz" "Shanna@melissa.tv" "Nathan@yesenia.net" "Julianne.OConner@kory.org" ...
+    ##  $ phone              : chr  "1-770-736-8031 x56442" "010-692-6593 x09125" "1-463-123-4447" "493-170-9623 x156" ...
+    ##  $ website            : chr  "hildegard.org" "anastasia.net" "ramiro.info" "kale.biz" ...
+    ##  $ address.street     : chr  "Kulas Light" "Victor Plains" "Douglas Extension" "Hoeger Mall" ...
+    ##  $ address.suite      : chr  "Apt. 556" "Suite 879" "Suite 847" "Apt. 692" ...
+    ##  $ address.city       : chr  "Gwenborough" "Wisokyburgh" "McKenziehaven" "South Elvis" ...
+    ##  $ address.zipcode    : chr  "92998-3874" "90566-7771" "59590-4157" "53919-4257" ...
+    ##  $ address.geo.lat    : chr  "-37.3159" "-43.9509" "-68.6102" "29.4572" ...
+    ##  $ address.geo.lng    : chr  "81.1496" "-34.4618" "-47.0653" "-164.2990" ...
+    ##  $ company.name       : chr  "Romaguera-Crona" "Deckow-Crist" "Romaguera-Jacobson" "Robel-Corkery" ...
+    ##  $ company.catchPhrase: chr  "Multi-layered client-server neural-net" "Proactive didactic contingency" "Face to face bifurcated interface" "Multi-tiered zero tolerance productivity" ...
+    ##  $ company.bs         : chr  "harness real-time e-markets" "synergize scalable supply-chains" "e-enable strategic applications" "transition cutting-edge web services" ...
 
 **4. Summary statistics**
 
@@ -427,8 +573,62 @@ str(api_data)
 summary(api_data)
 ```
 
-    ## Length  Class   Mode 
-    ##      0   NULL   NULL
+    ##        id            name          
+    ##  Min.   : 1.00   Length:10         
+    ##  1st Qu.: 3.25   Class :character  
+    ##  Median : 5.50   Mode  :character  
+    ##  Mean   : 5.50                     
+    ##  3rd Qu.: 7.75                     
+    ##  Max.   :10.00                     
+    ##    username            email          
+    ##  Length:10          Length:10         
+    ##  Class :character   Class :character  
+    ##  Mode  :character   Mode  :character  
+    ##                                       
+    ##                                       
+    ##                                       
+    ##     phone             website         
+    ##  Length:10          Length:10         
+    ##  Class :character   Class :character  
+    ##  Mode  :character   Mode  :character  
+    ##                                       
+    ##                                       
+    ##                                       
+    ##  address.street     address.suite     
+    ##  Length:10          Length:10         
+    ##  Class :character   Class :character  
+    ##  Mode  :character   Mode  :character  
+    ##                                       
+    ##                                       
+    ##                                       
+    ##  address.city       address.zipcode   
+    ##  Length:10          Length:10         
+    ##  Class :character   Class :character  
+    ##  Mode  :character   Mode  :character  
+    ##                                       
+    ##                                       
+    ##                                       
+    ##  address.geo.lat    address.geo.lng   
+    ##  Length:10          Length:10         
+    ##  Class :character   Class :character  
+    ##  Mode  :character   Mode  :character  
+    ##                                       
+    ##                                       
+    ##                                       
+    ##  company.name       company.catchPhrase
+    ##  Length:10          Length:10          
+    ##  Class :character   Class :character   
+    ##  Mode  :character   Mode  :character   
+    ##                                        
+    ##                                        
+    ##                                        
+    ##   company.bs       
+    ##  Length:10         
+    ##  Class :character  
+    ##  Mode  :character  
+    ##                    
+    ##                    
+    ## 
 
 **5. Dataset dimensions (rows and columns)**
 
@@ -436,7 +636,7 @@ summary(api_data)
 dim(api_data)
 ```
 
-    ## NULL
+    ## [1] 10 15
 
 **6. Column names**
 
@@ -444,7 +644,21 @@ dim(api_data)
 names(api_data)
 ```
 
-    ## NULL
+    ##  [1] "id"                 
+    ##  [2] "name"               
+    ##  [3] "username"           
+    ##  [4] "email"              
+    ##  [5] "phone"              
+    ##  [6] "website"            
+    ##  [7] "address.street"     
+    ##  [8] "address.suite"      
+    ##  [9] "address.city"       
+    ## [10] "address.zipcode"    
+    ## [11] "address.geo.lat"    
+    ## [12] "address.geo.lng"    
+    ## [13] "company.name"       
+    ## [14] "company.catchPhrase"
+    ## [15] "company.bs"
 
 # Assignment 2: Basic R Programming and Data Analysis
 
