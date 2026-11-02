@@ -1097,7 +1097,7 @@ boxplot(
 )
 ```
 
-![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-52-1.png)<!-- -->
+![](Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-52-1.png)<!-- -->
 
 ## 2.15 Relationship between two categorical variables
 
@@ -1241,7 +1241,7 @@ barplot(
 )
 ```
 
-![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-59-1.png)<!-- -->
+![](Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-59-1.png)<!-- -->
 
 A second bar plot:
 
@@ -1268,7 +1268,7 @@ dat2
 barplot(as.matrix(dat2), main = "Bar Plot of A to G")
 ```
 
-![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-60-1.png)<!-- -->
+![](Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-60-1.png)<!-- -->
 
 ## 2.17 Scatter plots and correlation
 
@@ -1282,7 +1282,7 @@ plot(
 )
 ```
 
-![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-61-1.png)<!-- -->
+![](Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-61-1.png)<!-- -->
 
 ``` r
 plot(
@@ -1294,7 +1294,7 @@ plot(
 )
 ```
 
-![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-62-1.png)<!-- -->
+![](Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-62-1.png)<!-- -->
 
 Calculate the correlation:
 
@@ -1351,7 +1351,7 @@ plot(
 abline(lm(WEIGHT ~ HEIGHT, data = data_class))
 ```
 
-![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-65-1.png)<!-- -->
+![](Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-65-1.png)<!-- -->
 
 Diagnostic plots for the regression model:
 
@@ -1359,7 +1359,7 @@ Diagnostic plots for the regression model:
 plot(data_lm)
 ```
 
-![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-66-1.png)<!-- -->![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-66-2.png)<!-- -->![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-66-3.png)<!-- -->![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-66-4.png)<!-- -->
+![](Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-66-1.png)<!-- -->![](Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-66-2.png)<!-- -->![](Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-66-3.png)<!-- -->![](Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-66-4.png)<!-- -->
 
 ## 2.19 Histograms
 
@@ -1371,7 +1371,7 @@ hist(
 )
 ```
 
-![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-67-1.png)<!-- -->
+![](Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-67-1.png)<!-- -->
 
 ``` r
 hist(
@@ -1382,7 +1382,7 @@ hist(
 )
 ```
 
-![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-68-1.png)<!-- -->
+![](Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-68-1.png)<!-- -->
 
 ## 2.20 Adding a smooth line to a plot
 
@@ -1402,7 +1402,7 @@ lines(
 )
 ```
 
-![](C:/Users/user/Downloads/My_R_programming_project/My_R_programming_project/scripts/Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-69-1.png)<!-- -->
+![](Assignment_1_and_2_R_Programming_Report_files/figure-gfm/unnamed-chunk-69-1.png)<!-- -->
 
 ## 2.21 Creating a body mass index (BMI) variable
 
