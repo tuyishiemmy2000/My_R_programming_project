@@ -264,3 +264,4 @@ abline(a = 0, b = 1, col = "red", lwd = 2)
 ```
 
 ![](Assignment-6_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![Actual and Predicted MPG](Actual%20and%20predicted%20MPG.png)
