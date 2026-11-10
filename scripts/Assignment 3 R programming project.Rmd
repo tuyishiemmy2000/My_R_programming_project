@@ -1,0 +1,105 @@
+---
+title: "Assignment3 R programming project"
+author: "TUYISHIME Emmanuel"
+date: "2026-11-02"
+output:
+  github_document: default
+  pdf_document: default
+---
+```{r}
+# Create students' marks
+marks <- matrix(
+  c(75, 80, 68, 90,
+    85, 78, 92, 88,
+    60, 70, 65, 72,
+    95, 89, 91, 94),
+  nrow = 4,
+  byrow = TRUE
+)
+
+colnames(marks) <- c("Mathematics", "English", "Biology", "Computer")
+rownames(marks) <- c("Student1", "Student2", "Student3", "Student4")
+
+marks
+
+# Calculate total marks for each student
+apply(marks, 1, sum)
+
+# Calculate average marks for each student
+apply(marks, 1, mean)
+
+# Calculate highest mark in each subject
+apply(marks, 2, max)
+```
+
+```{r}
+# Create a list of different datasets
+my_data <- list(
+  ages = c(18, 20, 22, 25, 30),
+  salaries = c(150000, 200000, 250000, 300000),
+  temperatures = c(24, 26, 28, 30, 32)
+)
+
+# Calculate summary statistics for each dataset
+lapply(my_data, summary)
+
+# Calculate standard deviation for each dataset
+lapply(my_data, sd)
+```
+
+```{r}
+# Number of students who passed in different subjects
+passed <- c(Math = 45, English = 38, Biology = 42, Computer = 48)
+
+# Total students examined
+total_students <- 50
+
+# Calculate percentage pass rate
+sapply(passed, function(x) (x / total_students) * 100)
+```
+
+```{r}
+# Create employee dataset
+employees <- data.frame(
+  Department = c("IT", "HR", "IT", "Finance", "HR",
+                 "Finance", "IT", "HR"),
+  Salary = c(500000, 350000, 600000, 450000,
+             400000, 550000, 650000, 380000)
+)
+
+# Calculate average salary by department
+tapply(employees$Salary, employees$Department, mean)
+
+# Calculate maximum salary by department
+tapply(employees$Salary, employees$Department, max)
+```
+
+```{r}
+# Monthly expenditure on different items
+food <- c(50000, 60000, 45000)
+transport <- c(20000, 25000, 15000)
+rent <- c(100000, 100000, 100000)
+
+# Calculate total monthly expenditure
+mapply(
+  function(f, t, r) f + t + r,
+  food,
+  transport,
+  rent
+)
+```
+
+```{r}
+# Create a list of examination marks
+exam_results <- list(
+  Mathematics = c(70, 80, 90),
+  Biology = c(65, 75, 85),
+  English = c(60, 70, 80)
+)
+
+# Calculate mean marks for each subject
+vapply(exam_results, mean, numeric(1))
+```
+## Conclusion
+
+The apply family of functions in R simplifies data manipulation and statistical analysis. Functions such as apply(), lapply(), sapply(), tapply(), mapply(), and vapply() help perform calculations efficiently across matrices, lists, vectors, and groups. Their use reduces repetitive code and improves the efficiency of data analysis.

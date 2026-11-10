@@ -1,0 +1,4 @@
+"Variable","Summary"
+"student_id","   Min. 1st Qu.  Median    Mean 3rd Qu. ;     1.0     1.5     2.0     2.0     2.5 ;    Max. ;     3.0 "
+"student_name","   Length     Class      Mode ;         3 character character "
+"marks","   Min. 1st Qu.  Median    Mean 3rd Qu. ;   72.00   78.50   85.00   82.33   87.50 ;    Max. ;   90.00 "
