@@ -1,0 +1,125 @@
+---
+title: "Assignment 6"
+author: "TUYISHIME Emmanuel"
+date: "2026-11-10"
+output: html_document
+---
+
+1.Multiple linear regression and interpretation
+
+We will use the built-in mtcars dataset in R. It is suitable because it contains several numerical variables describing cars.
+
+1.1. Understanding the Dataset
+
+```{r}
+data(mtcars)
+
+# View the dataset
+View(mtcars)
+
+# Display the first six rows
+head(mtcars)
+
+# Check the structure
+str(mtcars)
+
+# Summary statistics
+summary(mtcars)
+```
+Variable	Meaning	               Role
+mpg	      Miles per gallon	    Dependent variable
+wt	      Car weight	         Independent variable
+hp	      Horsepower	          Independent variable
+qsec	    Quarter-mile time	    Independent variable
+
+
+1.2.The objective is to predict fuel efficiency (mpg) using car weight, horsepower and quarter-mile time.
+
+```{r}
+# Fit multiple linear regression
+model <- lm(
+  mpg ~ wt + hp + qsec,
+  data = mtcars
+)
+
+# Display model results
+summary(model)
+```
+### Interpretation of Multiple Linear Regression Results
+
+A multiple linear regression model was developed to examine the relationship between vehicle fuel efficiency (MPG) and three explanatory variables: vehicle weight (wt), horsepower (hp), and quarter-mile time (qsec).
+
+The regression results show that vehicle weight has a negative and statistically significant coefficient of -4.35880 (p = 3.22e-06). This indicates that, holding horsepower and quarter-mile time constant, an increase of 1,000 pounds in vehicle weight is associated with an average decrease of approximately 4.36 MPG.
+
+Horsepower also has a negative coefficient of -0.01782, suggesting that an additional horsepower is associated with a decrease of approximately 0.018 MPG, when the other variables are held constant. However, this relationship is not statistically significant (p = 0.24418).
+
+Quarter-mile time has a positive coefficient of 0.51083, indicating that an additional second is associated with an increase of approximately 0.51 MPG, holding the other predictors constant. Nevertheless, this relationship is also not statistically significant (p = 0.25463).
+
+The model has an R-squared value of 0.8348, indicating that approximately 83.48% of the variation in fuel efficiency is explained by the three predictors. The adjusted R-squared is 0.8171, showing that the model maintains a high explanatory power after accounting for the number of predictors.
+
+Furthermore, the overall regression model is statistically significant (F = 47.15, p = 4.506e-11). This indicates that the predictors jointly provide significant explanatory power for fuel efficiency.
+
+In conclusion, vehicle weight is the only statistically significant individual predictor among the three variables at the 5% significance level. Heavier vehicles tend to have lower fuel efficiency, while the independent effects of horsepower and quarter-mile time are not statistically significant in this model.
+1.3.Test the significance of the predictors
+
+```{r}
+# Extract coefficients
+coef(model)
+
+# Extract p-values
+summary(model)$coefficients
+
+# Extract R-squared
+summary(model)$r.squared
+
+# Extract adjusted R-squared
+summary(model)$adj.r.squared
+```
+
+1.4. Make Predictions
+
+```{r}
+# Predict using the fitted model
+predictions <- predict(model)
+
+# Compare actual and predicted values
+comparison <- data.frame(
+  Actual = mtcars$mpg,
+  Predicted = predictions
+)
+
+head(comparison)
+```
+Prediction for new car:
+
+```{r}
+new_car <- data.frame(
+  wt = 3.0,
+  hp = 110,
+  qsec = 17.5
+)
+
+predict(model, newdata = new_car)
+```
+1.5.Visualize actual and predicted values
+
+```{r}
+# Reduce plot margins
+par(mar = c(4, 4, 3, 1))
+
+# Plot actual versus predicted MPG
+plot(
+  mtcars$mpg,
+  predictions,
+  xlab = "Actual MPG",
+  ylab = "Predicted MPG",
+  main = "Actual vs Predicted Fuel Efficiency",
+  pch = 19
+)
+
+# Add a reference line
+abline(a = 0, b = 1, col = "red", lwd = 2)
+
+
+```
+
