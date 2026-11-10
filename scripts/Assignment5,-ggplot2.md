@@ -39,7 +39,7 @@ p1 <- ggplot(iris, aes(x = Species)) +
 print(p1)
 ```
 
-![](Assignment5,-ggplot2_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
+![](assignment-5-images/species_bar_chart.png)<!-- -->
 
 ``` r
 ggsave(
@@ -69,7 +69,7 @@ p2 <- ggplot(iris, aes(x = Species, y = Sepal.Length)) +
 print(p2)
 ```
 
-![](Assignment5,-ggplot2_files/figure-gfm/unnamed-chunk-2-1.png)<!-- -->
+![](assignment-5-images/sepal_length_boxplot.png)<!-- -->
 
 ``` r
 ggsave(
@@ -98,7 +98,7 @@ p3 <- ggplot(iris, aes(x = Sepal.Length)) +
 print(p3)
 ```
 
-![](Assignment5,-ggplot2_files/figure-gfm/unnamed-chunk-3-1.png)<!-- -->
+![](assignment-5-images/sepal_length_density.png)<!-- -->
 
 ``` r
 ggsave(
@@ -132,7 +132,7 @@ p4 <- ggplot(iris, aes(x = Sepal.Length)) +
 print(p4)
 ```
 
-![](Assignment5,-ggplot2_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](assignment-5-images/sepal_length_histogram.png)<!-- -->
 
 ``` r
 ggsave(
@@ -166,7 +166,7 @@ p5 <- ggplot(iris, aes(x = Sepal.Length)) +
 print(p5)
 ```
 
-![](Assignment5,-ggplot2_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](assignment-5-images/horizontal_line.png)<!-- -->
 
 ``` r
 ggsave(
@@ -199,7 +199,7 @@ p6 <- ggplot(iris, aes(x = Species, y = Sepal.Length)) +
 print(p6)
 ```
 
-![](Assignment5,-ggplot2_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+![](assignment-5-images/jitter_plot.png)<!-- -->
 
 ``` r
 ggsave(
@@ -228,7 +228,7 @@ p7 <- ggplot(economics, aes(x = date, y = unemploy)) +
 print(p7)
 ```
 
-![](Assignment5,-ggplot2_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+![](assignment-5-images/unemployment_line_graph.png)<!-- -->
 
 ``` r
 ggsave(
@@ -259,7 +259,7 @@ p8 <- ggplot(iris, aes(x = Sepal.Length)) +
 print(p8)
 ```
 
-![](Assignment5,-ggplot2_files/figure-gfm/unnamed-chunk-8-1.png)<!-- -->
+![](assignment-5-images/density_rug_plot.png)<!-- -->
 
 ``` r
 ggsave(
@@ -301,7 +301,7 @@ p9 <- ggplot(
 print(p9)
 ```
 
-![](Assignment5,-ggplot2_files/figure-gfm/unnamed-chunk-9-1.png)<!-- -->
+![](assignment-5-images/mean_sepal_length_labels.png)<!-- -->
 
 ``` r
 ggsave(
@@ -330,7 +330,7 @@ p10 <- ggplot(iris, aes(x = Species, y = Sepal.Length)) +
 print(p10)
 ```
 
-![](Assignment5,-ggplot2_files/figure-gfm/unnamed-chunk-10-1.png)<!-- -->
+![](assignment-5-images/sepal_length_violin.png)<!-- -->
 
 ``` r
 ggsave(
@@ -369,7 +369,7 @@ p11 <- ggplot(iris, aes(x = Sepal.Length)) +
 print(p11)
 ```
 
-![](Assignment5,-ggplot2_files/figure-gfm/unnamed-chunk-11-1.png)<!-- -->
+![](assignment-5-images/vertical_line.png)<!-- -->
 
 ``` r
 ggsave(
